@@ -10,7 +10,7 @@ def writeLED ( filename, value, path=LED3_PATH ):
     return
 
 def removeTrigger():
-    writeLED (filename="/trigger", value="none")
+    writeLED ("/trigger", value="none")
     return
 
 print "Starting the LED Python Script"
@@ -28,6 +28,12 @@ elif  sys.argv[1] == "off":
     print("LED3 off")
     removeTrigger()
     writeLED("/brightness", "0")
-
+    
+elif sys.argv[1]=="flash":
+    print "Flashing the LED3"
+    writeLed("/trigger", value="timer")
+    writeLed("/brightness", value="50")
+    writeLed("/brightness", value="50")
+             
 else:
     print("Wrong argument")
